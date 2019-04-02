@@ -51,9 +51,9 @@
         <li>
             <a href="#">커뮤니티</a>
             <ul>
-                <li><a href="#">방명록</a></li>
+                <li><a href="<%=cp%>/guest/guest">방명록</a></li>
                 <li><a href="<%=cp%>/bbs/list">게시판</a></li>
-                <li><a href="#">자료실</a></li>
+                <li><a href="<%=cp%>/abbs">AJAX-게시판</a></li>
                 <li><a href="#">포토갤러리</a></li>
             </ul>
         </li>
@@ -66,7 +66,7 @@
             <a href="#">고객센터</a>
             <ul>
                 <li><a href="#" style="margin-left:150px; " onmouseover="this.style.marginLeft='150px';">자주하는질문</a></li>
-                <li><a href="#">공지사항</a></li>
+                <li><a href="<%=cp%>/notice/list">공지사항</a></li>
                 <li><a href="#">질문과 답변</a></li>
                 <li><a href="#">1:1 문의</a></li>
                 <li><a href="#">이벤트</a></li>

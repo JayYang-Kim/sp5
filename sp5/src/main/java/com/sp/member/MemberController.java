@@ -75,9 +75,17 @@ public class MemberController {
 		
 		session.setAttribute("member", info);
 		
+		String uri = (String)session.getAttribute("preLoginURI");
+		session.removeAttribute("preLoginURI");
+		if(uri == null) {
+			uri = "redirect:/";
+		} else {
+			uri = "redirect:" + uri;
+		}
+		
 		// 리다이렉트=>insert, update, delete 작업후, 로그인후, 로그아웃후
 		// 처음화면으로 리다이렉트
-		return "redirect:/";
+		return uri;
 	}
 	
 	@RequestMapping(value="/member/logout")
@@ -96,11 +104,6 @@ public class MemberController {
 			String dropout,
 			Model model,
 			HttpSession session) {
-		SessionInfo info=(SessionInfo)session.getAttribute("member");
-		if(info==null) {
-			return "redirect:/member/login";
-		}
-		
 		if(dropout==null) {
 			model.addAttribute("mode", "update");
 		} else {
@@ -119,10 +122,7 @@ public class MemberController {
 	     ) {
 		
 		SessionInfo info=(SessionInfo)session.getAttribute("member");
-		if(info==null) {
-			return "redirect:/member/login";
-		}
-		
+
 		Member dto=service.readMember(info.getUserId());
 		if(dto==null) {
 			session.invalidate();
@@ -175,11 +175,6 @@ public class MemberController {
 			Member dto,
 			Model model,
 			HttpSession session) {
-		
-		SessionInfo info=(SessionInfo)session.getAttribute("member");
-		if(info==null) {
-			return "redirect:/member/login";
-		}
 
 		service.updateMember(dto);
 		

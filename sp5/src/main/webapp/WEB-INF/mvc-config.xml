@@ -38,6 +38,24 @@
            </list>
        </property>
     </bean>
+    
+    <!-- Interceptor 설정 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<!-- 모든 경로에 적용 -->
+    		<mvc:mapping path="/**"/>
+    		<!-- 제외 -->
+    		<mvc:exclude-mapping path="/"/>
+    		<mvc:exclude-mapping path="/resource/**"/> <!-- resource파일을 풀어주지 않으면 해당 경로내에 있는 파일 사용 불가 -->
+    		<mvc:exclude-mapping path="/main"/>
+    		<mvc:exclude-mapping path="/member/login"/>
+    		<mvc:exclude-mapping path="/member/logout"/>
+    		<mvc:exclude-mapping path="/member/member"/>
+    		<mvc:exclude-mapping path="/member/userIdCheck"/>
+    		<!-- 적용할 Interceptor 파일 -->
+    		<bean class="com.sp.member.LoginCheckInterceptor"></bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
      
 	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="order" value="1" />
