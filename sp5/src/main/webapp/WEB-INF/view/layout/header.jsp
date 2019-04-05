@@ -55,6 +55,7 @@
                 <li><a href="<%=cp%>/bbs/list">게시판</a></li>
                 <li><a href="<%=cp%>/abbs">AJAX-게시판</a></li>
                 <li><a href="#">포토갤러리</a></li>
+                <li><a href="<%=cp%>/chat/main">채팅</a></li>
             </ul>
         </li>
 
@@ -70,6 +71,7 @@
                 <li><a href="#">질문과 답변</a></li>
                 <li><a href="#">1:1 문의</a></li>
                 <li><a href="#">이벤트</a></li>
+                <li><a href="<%=cp%>/mail/send">메일보내기</a></li>
             </ul>
         </li>
 
@@ -82,7 +84,6 @@
                 <li><a href="#">일정관리</a></li>
                 <li><a href="#">친구관리</a></li>
                 <li><a href="#">사진첩</a></li>
-                <li><a href="#">채팅</a></li>
             </ul>
         </li>
         </c:if>

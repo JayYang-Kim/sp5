@@ -68,7 +68,13 @@
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
+	
+	<!-- WebSocket 환결설정 -->
+	<websocket:handlers>
+		<websocket:mapping handler="mySocketHandler" path="/chat.msg"/>
+	</websocket:handlers>
+	<bean id="mySocketHandler" class="com.sp.chat.MySocketHandler"/>
+	
 	<!-- 파일 업로드 -->
     <bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
          <!-- 자바파일이 UTF-8로 저장된 경우 한글파일명이 깨지지 않게하기 위해 -->
