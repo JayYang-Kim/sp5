@@ -1,11 +1,11 @@
-package com.sp.chat;
+package com.sp.chat2;
 
 import org.springframework.web.socket.WebSocketSession;
 
 public class User {
 	private String userId;
 	private String nickName;
-	private WebSocketSession session;
+	private WebSocketSession session; // Web Socket
 	
 	public String getUserId() {
 		return userId;

@@ -2,17 +2,11 @@ package com.sp.chat;
 
 import org.springframework.web.socket.WebSocketSession;
 
-public class User {
-	private String userId;
+public class GuestInfo {
 	private String nickName;
 	private WebSocketSession session;
+	private RoomInfo room;
 	
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 	public String getNickName() {
 		return nickName;
 	}
@@ -24,5 +18,11 @@ public class User {
 	}
 	public void setSession(WebSocketSession session) {
 		this.session = session;
+	}
+	public RoomInfo getRoom() {
+		return room;
+	}
+	public void setRoom(RoomInfo room) {
+		this.room = room;
 	}
 }

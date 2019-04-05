@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<dataCount>5</dataCount>
+	<record num="5">
+		<name>HTML</name>
+		<content><![CDATA[HTML 입니다.]]></content>
+		<created>2013-07-07 10:05:07</created>	
+	</record>
+	<record num="4">
+		<name>서블릿</name>
+		<content><![CDATA[서블릿 입니다.]]></content>
+		<created>2012-08-09 14:19:25</created>	
+	</record>
+	<record num="3">
+		<name>오라클</name>
+		<content><![CDATA[오라클 입니다.]]></content>
+		<created>2012-05-07 11:25:10</created>	
+	</record>
+	<record num="2">
+		<name>스프링</name>
+		<content><![CDATA[스프링 입니다.]]></content>
+		<created>2011-02-02 10:17:19</created>	
+	</record>
+	<record num="1">
+		<name>자바</name>
+		<content><![CDATA[자바 입니다.]]></content>
+		<created>2010-10-10 14:30:15</created>	
+	</record>
+</root>

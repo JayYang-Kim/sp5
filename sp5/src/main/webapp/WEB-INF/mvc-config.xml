@@ -30,6 +30,25 @@
 	   <aop:pointcut id="controllerOperation" expression="execution(public * com.sp..*Controller.*(..))" />
    </aop:config>
 
+	<!-- Interceptor 설정. -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            
+            <!-- 제외 -->
+            <mvc:exclude-mapping path="/"/>
+            <mvc:exclude-mapping path="/main"/>
+            <mvc:exclude-mapping path="/resource/**"/>
+            <mvc:exclude-mapping path="/member/login"/>
+            <mvc:exclude-mapping path="/member/logout"/>
+            <mvc:exclude-mapping path="/member/member"/>
+            <mvc:exclude-mapping path="/member/userIdCheck"/>
+            <mvc:exclude-mapping path="/survey/**"/>
+            <mvc:exclude-mapping path="/xml/**"/>
+            <bean class="com.sp.member.LoginCheckInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>	 
+
 	<!-- 타일즈 환경 설정 -->
     <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
        <property name="definitions">
@@ -38,24 +57,6 @@
            </list>
        </property>
     </bean>
-    
-    <!-- Interceptor 설정 -->
-    <mvc:interceptors>
-    	<mvc:interceptor>
-    		<!-- 모든 경로에 적용 -->
-    		<mvc:mapping path="/**"/>
-    		<!-- 제외 -->
-    		<mvc:exclude-mapping path="/"/>
-    		<mvc:exclude-mapping path="/resource/**"/> <!-- resource파일을 풀어주지 않으면 해당 경로내에 있는 파일 사용 불가 -->
-    		<mvc:exclude-mapping path="/main"/>
-    		<mvc:exclude-mapping path="/member/login"/>
-    		<mvc:exclude-mapping path="/member/logout"/>
-    		<mvc:exclude-mapping path="/member/member"/>
-    		<mvc:exclude-mapping path="/member/userIdCheck"/>
-    		<!-- 적용할 Interceptor 파일 -->
-    		<bean class="com.sp.member.LoginCheckInterceptor"></bean>
-    	</mvc:interceptor>
-    </mvc:interceptors>
      
 	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="order" value="1" />
@@ -68,13 +69,13 @@
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
-	<!-- WebSocket 환결설정 -->
-	<websocket:handlers>
-		<websocket:mapping handler="mySocketHandler" path="/chat.msg"/>
-	</websocket:handlers>
-	<bean id="mySocketHandler" class="com.sp.chat.MySocketHandler"/>
-	
+
+ 	<!-- 웹소켓 환경 설정 -->
+ 	<websocket:handlers>
+ 		<websocket:mapping handler="mySocketHandler" path="/chat.msg"/>
+ 	</websocket:handlers>
+ 	<bean id="mySocketHandler" class="com.sp.chat.MySocketHandler" />
+
 	<!-- 파일 업로드 -->
     <bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
          <!-- 자바파일이 UTF-8로 저장된 경우 한글파일명이 깨지지 않게하기 위해 -->
@@ -83,12 +84,11 @@
     </bean>
 
     <!-- 예외처리 -->
-<!--     
+<!--
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver">
         <property name="order" value="1" />
      </bean>
  -->
-      
     <bean id="exceptionResolver"
                class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="order" value="1" />
@@ -99,10 +99,10 @@
 				<prop key="java.lang.Exception">.error.error</prop>
             </props>
         </property>
-        <!-- 기타 예외가 발생한 경우  -->
+         <!-- 기타 예외가 발생한 경우  -->
         <property name="defaultErrorView" value=".error.error"/>
 		<!-- 에러 발생시 로그 출력 -->
     	<property name="warnLogCategory" value="ERROR"/>
-    </bean>
-
+   </bean>
+ 
 </beans>
